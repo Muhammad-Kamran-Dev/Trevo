@@ -74,6 +74,20 @@
             "headers": [],
             "params": [],
             "tests": []
+        },
+        {
+            "_id": "ea4c55ba-009d-412e-90c4-de4d5233b34a",
+            "colId": "181813b1-2357-41d4-9423-04e1e61269c5",
+            "containerId": "f55502f3-cd51-47c3-a8b3-6bee26f1df31",
+            "name": "ME",
+            "url": "http://localhost:3000/api/users/me",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-07-09T14:55:52.369Z",
+            "modified": "2023-07-09T14:56:10.881Z",
+            "headers": [],
+            "params": [],
+            "tests": []
         }
     ]
 }

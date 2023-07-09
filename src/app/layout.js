@@ -5,7 +5,7 @@ const montserrat = Montserrat({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Trevo website",
-  description: "Nextjs Website For Travelling"
+  description: "Nextjs WebApp For Travelling"
 };
 
 export default function RootLayout({ children }) {

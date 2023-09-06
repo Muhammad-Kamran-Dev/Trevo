@@ -5,16 +5,10 @@ export async function connect() {
     mongoose.connect(process.env.MONGO_URI);
     const connection = mongoose.connection;
 
-    connection.on("connected", () => {
-      console.log("Hurray it get connected");
-    });
+    connection.on("connected", () => {});
 
-    connection.on("error", error => {
-      console.log("MongoDB connection error: ", error);
+    connection.on("error", (error) => {
       process.exit();
     });
-  } catch (error) {
-    console.log("Something goes wrong!");
-    console.log(error);
-  }
+  } catch (error) {}
 }

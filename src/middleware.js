@@ -7,7 +7,6 @@ export function middleware(request) {
 
   let isPublicPath = pathname === "/login" || pathname === "/signup";
   const token = request.cookies.get("auth-token")?.value || "";
-  console.log("ites working now as well ");
   if (isPublicPath && token) {
     return NextResponse.redirect(new URL("/", request.nextUrl));
   } else if (!isPublicPath && !token) {
@@ -17,5 +16,5 @@ export function middleware(request) {
 
 // See "Matching Paths" below to learn more
 export const config = {
-  matcher: ["/", "/profile/:path*", "/login", "/signup"]
+  matcher: ["/", "/profile/:path*", "/login", "/signup"],
 };

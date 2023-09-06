@@ -14,7 +14,7 @@ export async function POST(request) {
     if (!userExist) {
       return NextResponse.json({
         success: false,
-        message: "User does not Exist's"
+        message: "User does not Exist's",
       });
     }
     const isPasswordCorrect = await bcryptjs.compare(
@@ -25,35 +25,34 @@ export async function POST(request) {
     if (!isPasswordCorrect)
       return NextResponse.json({
         success: false,
-        message: "Invalid Credentials"
+        message: "Invalid Credentials",
       });
 
     //create a token Data to encrypt
     const tokenData = {
       id: userExist._id,
       name: userExist.name,
-      email: userExist.email
+      email: userExist.email,
     };
 
     // Sign the Token with secret key
-    const token = await jwt.sign(tokenData, process.env.SECRET_KEY, {
-      expiresIn: "1d"
+    const token = jwt.sign(tokenData, process.env.SECRET_KEY, {
+      expiresIn: "1d",
     });
 
     // // create nextResponse
     const response = NextResponse.json({
       success: true,
-      message: "Login Successfully"
+      message: "Login Successfully",
+      jwtToken: token,
     });
 
     // // Setting the cookie to the safest cookie which can not be accessed by any third party from client browser
     response.cookies.set("auth-token", token, {
-      httpOnly: true
+      httpOnly: true,
     });
 
     // returning the response with the response
     return response;
-  } catch (error) {
-    console.log(error.message);
-  }
+  } catch (error) {}
 }

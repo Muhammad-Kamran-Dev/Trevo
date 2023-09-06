@@ -1,5 +1,4 @@
 export default function Profile({ params }) {
-  console.log(params);
   return (
     <div>
       <h1>

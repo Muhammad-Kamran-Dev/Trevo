@@ -5,25 +5,25 @@ export async function GET(request) {
     if (!request.cookies.get("auth-token")) {
       return NextResponse.json({
         success: false,
-        message: "User is not Loged in"
+        message: "User is not Loged in",
       });
     }
 
     const response = NextResponse.json({
       success: true,
-      message: "User Logout Successully"
+      message: "User Logout Successfully",
     });
 
     response.cookies.set("auth-token", "", {
       expires: new Date(0),
-      httpOnly: true
+      httpOnly: true,
     });
 
     return response;
   } catch (error) {
     NextResponse.json({
       success: false,
-      message: "some"
+      message: "some",
     });
   }
 }

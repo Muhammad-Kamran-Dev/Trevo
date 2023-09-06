@@ -8,11 +8,16 @@ export async function POST(request) {
   try {
     const { name, email, password } = await request.json();
 
+    if (!name || !email || !password)
+      return NextResponse.json({
+        success: false,
+        message: "Missing required parameters",
+      });
     const userExist = await User.findOne({ email });
     if (userExist) {
       return NextResponse.json({
         success: false,
-        message: "This user already Exist's"
+        message: "This user already Exist's",
       });
     }
     const salt = await bcryptjs.genSalt(10);
@@ -21,16 +26,15 @@ export async function POST(request) {
     const user = new User({
       name,
       email,
-      password: hashedPassword
+      password: hashedPassword,
     });
     const savedUser = await user.save();
 
     return NextResponse.json({
       success: true,
       message: "User created Successfully",
-      savedUser
+      savedUser,
     });
   } catch (error) {
-    console.log(error.message);
   }
 }

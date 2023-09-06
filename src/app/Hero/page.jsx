@@ -14,7 +14,7 @@ export default function Hero() {
       <div className="container flex flex-col items-center px-5 py-24 mx-auto md:flex-row">
         <div className="flex flex-col items-center mb-16 text-center lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 md:items-start md:text-left md:mb-0">
           <h1
-            className="mb-4 text-4xl font-bold  title-font sm:text-4xl uppercase"
+            className="mb-4 text-4xl font-bold uppercase title-font sm:text-4xl"
             style={{ lineHeight: "125%" }}
           >
             <span className="text-[#7bcfcd]">Before</span> they sold out
@@ -29,10 +29,10 @@ export default function Hero() {
             hexagon try-hard chambray.
           </p>
           <div className="flex justify-center">
-            <button className="inline-flex px-6 py-2 text-lg text-white bg-[#7bcfcd] border-0 rounded focus:outline-none hover:bg-[#7bcfcd] opacity-90 hover:opacity-100 items-center justify-center">
+            <button className="inline-flex px-6 py-2 text-lg text-white bg-[#7bcfcd] rounded focus:outline-none hover:bg-[#7bcfcd] opacity-90 hover:opacity-100 items-center justify-center">
               Search For Tour
             </button>
-            <button className="inline-flex px-6 py-2 ml-4 text-lg text-gray-700 bg-gray-100 border-0 rounded focus:outline-none hover:bg-gray-200 border-2 border-[#7bcfcd] items-center justify-center ">
+            <button className="inline-flex px-6 py-2 ml-4 text-lg text-gray-700 bg-gray-100 rounded focus:outline-none hover:bg-gray-200 border-2 border-[#7bcfcd] items-center justify-center ">
               Get Started
             </button>
           </div>

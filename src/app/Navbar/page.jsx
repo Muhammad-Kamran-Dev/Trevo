@@ -26,7 +26,6 @@ export default function Navbar() {
 
   return (
     <>
-      <Toaster />
       <header className="py-3 shadow-xl bg-[#7bcfcd]">
         <nav className="flex items-center justify-between px-10">
           <div className="logo text-2xl font-bold text-[#FBFCF8]">

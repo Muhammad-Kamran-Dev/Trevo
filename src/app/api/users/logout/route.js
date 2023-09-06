@@ -5,7 +5,7 @@ export async function GET(request) {
     if (!request.cookies.get("auth-token")) {
       return NextResponse.json({
         success: false,
-        message: "User is not Loged in",
+        message: "User is not logged in",
       });
     }
 

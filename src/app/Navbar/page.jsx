@@ -1,29 +1,30 @@
 "use client";
 import Link from "next/link";
-import axios from "axios";
-import toast, { Toaster } from "react-hot-toast";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 export default function Navbar() {
-  const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
+  const router = useRouter();
   const onLogout = async () => {
     try {
       const url = "/api/users/logout";
       const response = await axios.get(url);
+
       if (!response.data.success) {
+        router.push("/login");
         return toast.error(response.data.message);
       }
+
       toast.success(response.data.message);
-      router.push("/login");
       setIsLogin(false);
+      router.push("/login");
     } catch (error) {
       toast.error("Something Went wrong");
-      setIsLogin(false);
     }
   };
-
   return (
     <>
       <header className="py-3 shadow-xl bg-[#7bcfcd]">
@@ -41,20 +42,22 @@ export default function Navbar() {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  className=" text-[#FBFCF8]  opacity-90 hover:opacity-100 hover:cursor-pointer hover:transform hover:scale-90"
-                  href={"/profile"}
-                >
-                  Profile
-                </Link>
-              </li>
+              {isLogin && (
+                <li>
+                  <Link
+                    className=" text-[#FBFCF8]  opacity-90 hover:opacity-100 hover:cursor-pointer hover:transform hover:scale-90"
+                    href={"/profile"}
+                  >
+                    Profile
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   className=" text-[#FBFCF8]  opacity-90 hover:opacity-100 hover:cursor-pointer hover:transform hover:scale-90"
                   href={"/signup"}
                 >
-                  Register
+                  Login
                 </Link>
               </li>
               {isLogin ? (

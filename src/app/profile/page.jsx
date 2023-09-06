@@ -5,17 +5,19 @@ import toast from "react-hot-toast";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { formatKey } from "../../utils/format";
+
 export default function Profile() {
   const router = useRouter();
-
   const onLogout = async () => {
     try {
       const url = "/api/users/logout";
       const response = await axios.get(url);
+
       if (!response.data.success) {
-        router.push("/");
+        router.push("/login");
         return toast.error(response.data.message);
       }
+
       toast.success(response.data.message);
       router.push("/login");
     } catch (error) {

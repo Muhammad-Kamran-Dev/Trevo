@@ -9,14 +9,21 @@ connect();
 export async function POST(request) {
   try {
     const { email, password } = await request.json();
-
+    if (!email || !password) {
+      return NextResponse.json({
+        success: false,
+        message: "Missing required parameters",
+      });
+    }
     const userExist = await User.findOne({ email });
+
     if (!userExist) {
       return NextResponse.json({
         success: false,
         message: "User does not Exist's",
       });
     }
+
     const isPasswordCorrect = await bcryptjs.compare(
       password,
       userExist.password
@@ -35,24 +42,26 @@ export async function POST(request) {
       email: userExist.email,
     };
 
-    // Sign the Token with secret key
+    // sign the Token with secret key
     const token = jwt.sign(tokenData, process.env.SECRET_KEY, {
       expiresIn: "1d",
     });
 
-    // // create nextResponse
+    // create nextResponse
     const response = NextResponse.json({
       success: true,
       message: "Login Successfully",
       jwtToken: token,
     });
 
-    // // Setting the cookie to the safest cookie which can not be accessed by any third party from client browser
+    // // setting the cookie to the safest cookie which can not be accessed by any third party from client browser
     response.cookies.set("auth-token", token, {
       httpOnly: true,
     });
 
     // returning the response with the response
     return response;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 }

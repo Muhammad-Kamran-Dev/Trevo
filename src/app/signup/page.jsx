@@ -10,7 +10,7 @@ import Button from "../../components/Button";
 export default function Signup() {
   const router = useRouter();
 
-  const url = "http://localhost:3000/api/users/signup";
+  const url = "https://trevo-gules.vercel.app/api/users/signup";
   const [user, setUser] = useState({
     name: "",
     email: "",

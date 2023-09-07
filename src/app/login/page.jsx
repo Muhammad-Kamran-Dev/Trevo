@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import Button from "../../components/Button";
 export default function Login() {
   const router = useRouter();
-  const url = "http://localhost:3000/api/users/login";
+  const url = "https://trevo-gules.vercel.app/api/users/login";
   const [user, setUser] = useState({
     email: "",
     password: "",

@@ -29,7 +29,9 @@ export default function Profile() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/users/me");
+        const response = await axios.get(
+          "https://trevo-gules.vercel.app/api/users/me"
+        );
         const { userData } = response.data;
         toast.success("User data available ");
         const keyValueArray = Object.entries(userData);
